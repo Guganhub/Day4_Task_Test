@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //comparing JSON properties without order
+        var obj1={name:"Person1",age:5}
+        var obj2={age:5,name:"Person1"}
+        console.log(obj1==obj2)
+
+        
+        // Create a XMLHttpRequest object
+
+        var obj = new XMLHttpRequest();
+
+        // open a connnection
+
+        obj.open('GET','https://restcountries.com/v3.1/all',true)
+
+        //send the connection
+
+        obj.send();
+
+        obj.onload=function(){
+            var data=JSON.parse(obj.response)
+           // console.log(data)
+            for(var flags in data){
+
+                // 2.Display all the flags of the county
+                console.log(data[flags].flags)
+            }
+            for(var name in data){
+
+                //display all the names of the country
+                console.log(data[name].name)
+
+                // display all the region of the county
+                console.log(data[name].region)
+
+                // display all the subregion of the country
+                console.log(data[name].subregion)
+
+                // display all the population of the country
+                console.log(data[name].population)
+            }
+            
+            
+        }
+
+
+    </script>
+</body>
+</html>
